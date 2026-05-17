@@ -67,3 +67,9 @@ async def on_restart_quiz(cb: CallbackQuery, state: FSMContext):
 @router.message(Command("help"))
 async def on_help(message: Message):
     await message.answer(texts.HELP_TEXT.format(manager=config.MANAGER_USERNAME))
+
+
+@router.message(Command("restart"))
+async def on_restart(message: Message, state: FSMContext):
+    await state.clear()
+    await message.answer(texts.WELCOME, reply_markup=_start_keyboard())

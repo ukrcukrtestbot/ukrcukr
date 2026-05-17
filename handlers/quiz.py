@@ -43,7 +43,11 @@ def _contact_keyboard() -> InlineKeyboardMarkup:
             InlineKeyboardButton(
                 text=texts.BTN_LEAVE_CONTACT,
                 callback_data="collect_contact",
-            )
+            ),
+            InlineKeyboardButton(
+                text=texts.BTN_RESTART_QUIZ,
+                callback_data="restart_quiz",
+            ),
         ]]
     )
 
@@ -53,6 +57,12 @@ def _keyboard(idx: int) -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text=label, callback_data=cb_data)]
         for label, cb_data, _ in texts.QUESTIONS[idx]["options"]
     ]
+    rows.append([
+        InlineKeyboardButton(
+            text=texts.BTN_RESTART_INLINE,
+            callback_data="restart_quiz",
+        )
+    ])
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
