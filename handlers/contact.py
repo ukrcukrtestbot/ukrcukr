@@ -38,6 +38,17 @@ def _phone_keyboard() -> ReplyKeyboardMarkup:
     )
 
 
+def _done_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[[
+            InlineKeyboardButton(
+                text=texts.BTN_RESTART_AFTER_DONE,
+                callback_data="restart_quiz",
+            )
+        ]]
+    )
+
+
 def _city_keyboard() -> InlineKeyboardMarkup:
     rows = []
     for i in range(0, len(texts.CITIES), 2):
@@ -150,4 +161,7 @@ async def _finish(message: Message, state: FSMContext, city: str):
     data = await state.get_data()
     await lead.send_lead(message.bot, data, message.from_user)
     await state.set_state(None)
-    await message.answer(texts.CONTACT_DONE.format(manager=config.MANAGER_USERNAME))
+    await message.answer(
+        texts.CONTACT_DONE.format(manager=config.MANAGER_USERNAME),
+        reply_markup=_done_keyboard(),
+    )

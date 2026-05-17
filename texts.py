@@ -16,6 +16,7 @@ WELCOME = (
 BTN_START_QUIZ = "▶️ Почати тест"
 BTN_RESTART_INLINE = "🔁 Почати заново"
 BTN_RESTART_QUIZ = "🔁 Пройти знову"
+BTN_RESTART_AFTER_DONE = "🔁 Пройти тест ще раз"
 
 WELCOME_BACK = (
     "З поверненням! 👋\n\n"
